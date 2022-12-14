@@ -1,0 +1,11 @@
+{
+  "name": "expense-tracker-api",
+  "version": "1.0.0",
+  "description": "api for expense tracker application",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "widy guilias",
+  "license": "ISC"
+}
