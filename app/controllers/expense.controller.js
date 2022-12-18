@@ -27,3 +27,28 @@ exports.findAll = (req, res) => {
 				})
 			})
 }
+
+exports.update = (req, res) => {
+	const id = req.params.id
+
+	Expense.findByIdAndUpdate(id,{
+		expenseDate: req.body.expenseDate,
+		category: req.body.category,
+		desc: req.body.desc,
+		amount: req.body.amount
+	})
+	.then(result => {
+		if(!result){
+			res.status(404).send({
+				message: "expense not found"
+			})
+		}
+
+		res.send({message: "expense was updated"})
+	})
+	.catch(err => {
+		res.status(409).send({
+			message: err.message || "some error while updating an expense"
+		})
+	})
+}
