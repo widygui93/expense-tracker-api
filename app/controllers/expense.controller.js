@@ -52,3 +52,23 @@ exports.update = (req, res) => {
 		})
 	})
 }
+
+exports.delete = (req, res) => {
+	const id = req.params.id
+
+	Expense.findByIdAndRemove(id)
+	.then(result => {
+		if(!result){
+			res.status(404).send({
+				message: "expense not found"
+			})
+		}
+
+		res.send({message: "expense was deleted"})
+	})
+	.catch(err => {
+		res.status(409).send({
+			message: err.message || "some error while deleting an expense"
+		})
+	})
+}
