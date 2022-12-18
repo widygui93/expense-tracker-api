@@ -6,6 +6,7 @@ module.exports = app => {
 	router.get('/', expenses.findAll)
 	router.put('/:id', expenses.update)
 	router.delete('/:id', expenses.delete)
+	router.get('/:id', expenses.findOne)
 
 	app.use('/api/expenses', router)
 }
