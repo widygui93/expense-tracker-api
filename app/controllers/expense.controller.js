@@ -72,3 +72,23 @@ exports.delete = (req, res) => {
 		})
 	})
 }
+
+exports.findOne = (req, res) => {
+	const id = req.params.id
+
+	Expense.findById(id)
+	.then(result => {
+		if(!result){
+			res.status(404).send({
+				message: "expense not found"
+			})
+		}
+
+		res.send(result)
+	})
+	.catch(err => {
+		res.status(409).send({
+			message: err.message || "some error while showing an expense"
+		})
+	})
+}
